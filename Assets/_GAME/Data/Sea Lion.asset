@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sea Lion
   m_EditorClassIdentifier: 
   type: 0
-  creatureSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  creatureSprite: {fileID: 9142751539533780291, guid: cfb74d238efe7d249954609fa7af3817, type: 3}
   creatureName: Sea Lion

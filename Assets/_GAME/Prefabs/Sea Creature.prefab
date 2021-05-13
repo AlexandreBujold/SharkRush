@@ -162,12 +162,18 @@ MonoBehaviour:
   type: 0
   state: 0
   speed: 1
-  fleeSpeedMultiplier: 1.5
+  fleeSpeedMultiplier: 2
   minTravelTime: 2
   maxTravelTime: 5
   travelTime: 3
+  fleeTags:
+  - Player
+  fleeRange: 5
+  predator: {fileID: 0}
   travelDirection: {x: 0, y: 0, z: 0}
   rb: {fileID: 814767412}
+  sprite: {fileID: 1261044323}
+  eatEffectPrefab: {fileID: 1979138581970731618, guid: 9dbfe51c30f3df740b7d66e2b2b9e4e9, type: 3}
 --- !u!50 &814767412
 Rigidbody2D:
   serializedVersion: 4
@@ -188,7 +194,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &814767413
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

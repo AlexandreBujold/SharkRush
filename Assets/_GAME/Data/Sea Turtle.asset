@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sea Turtle
   m_EditorClassIdentifier: 
   type: 2
-  creatureSprite: {fileID: 21300000, guid: 44a054df1702e39458b7072b08d0f212, type: 3}
+  creatureSprite: {fileID: 8966945178157639174, guid: 9dc0d00317a47da4d94e3da34c7d4fb9, type: 3}
   creatureName: Sea Turtle

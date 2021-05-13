@@ -14,6 +14,17 @@ namespace SharkRush
         [Tooltip("Only active when left mouse button is pressed.")]
         private float speedMultiplier = 1f;
 
+        [Space]
+        [Header("Stamina")]
+        [SerializeField]
+        private float stamina = 100f;
+        [SerializeField]
+        private float maxStamina = 100f;
+        [SerializeField]
+        private float staminaRecoveryRate = 10f;
+        [SerializeField]
+        private float rushCost = 10f;
+
         private float finalSpeed;
         [Header("References")]
         [SerializeField]
@@ -22,18 +33,23 @@ namespace SharkRush
         private Camera gameCamera;
         [SerializeField]
         private SpriteRenderer sprite;
+        [SerializeField]
+        private StaminaIndicator staminaIndicator;
         // Start is called before the first frame update
         void Start()
         {
+            //Get References
             rb = rb == null ? GetComponent<Rigidbody2D>() : rb;
             gameCamera = gameCamera == null ? Camera.main : gameCamera;
+
+            //Initialize Stamina
+            stamina = maxStamina;
         }
 
         // Update is called once per frame
         void Update()
         {
-            //Increase speed by multiplier if LMB is held
-            finalSpeed = Input.GetMouseButton(0) == true ? speed * speedMultiplier : speed;
+            HandleRush();
             ControlShark();
         }
 
@@ -41,7 +57,24 @@ namespace SharkRush
         {
             if (sprite)
                 sprite.flipY = direction.x < 0 ? true : false;
+        }
 
+        private void HandleRush()
+        {
+            //If left mouse button is pressed...
+            if (Input.GetMouseButton(0) == true)
+            {
+                finalSpeed = speed * speedMultiplier;
+                stamina = Mathf.Clamp(stamina - (rushCost * Time.deltaTime), 0, maxStamina);
+            }
+            else
+            {
+                finalSpeed = speed;
+                stamina = Mathf.Clamp(stamina + (staminaRecoveryRate * Time.deltaTime), 0, maxStamina);
+            }
+
+            if (staminaIndicator)
+                staminaIndicator.UpdateUI(stamina, 0, maxStamina);
         }
 
         /// <summary>

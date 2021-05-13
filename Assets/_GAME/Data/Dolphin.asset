@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dolphin
   m_EditorClassIdentifier: 
   type: 0
-  creatureSprite: {fileID: 21300000, guid: 961e3ca766185364187c1692388e0e46, type: 3}
+  creatureSprite: {fileID: 291351909045924676, guid: 4495ae167c494c34e948479c7f89519b, type: 3}
   creatureName: Dolphin
