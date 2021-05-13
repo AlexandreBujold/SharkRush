@@ -18,7 +18,10 @@ namespace SharkRush
         [Header("References")]
         [SerializeField]
         private Rigidbody2D rb;
+        [SerializeField]
         private Camera gameCamera;
+        [SerializeField]
+        private SpriteRenderer sprite;
         // Start is called before the first frame update
         void Start()
         {
@@ -34,6 +37,13 @@ namespace SharkRush
             ControlShark();
         }
 
+        private void FlipSharkSprite(Vector3 direction)
+        {
+            if (sprite)
+                sprite.flipY = direction.x < 0 ? true : false;
+
+        }
+
         /// <summary>
         /// Handles moving and rotating the shark towards the mouse.
         /// </summary>
@@ -46,6 +56,7 @@ namespace SharkRush
             float theta = Mathf.Atan2(travelDirection.y, travelDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(theta, Vector3.forward);
 
+            FlipSharkSprite(travelDirection);
             if (rb != null)
             {
                 rb.AddForce(travelDirection * finalSpeed);

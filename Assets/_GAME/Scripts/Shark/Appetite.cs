@@ -17,17 +17,13 @@ namespace SharkRush
         private SharkController sharkController;
         [SerializeField]
         private Score score;
+        [SerializeField]
+        private AppetiteIndicator indicator;
         // Start is called before the first frame update
         void Start()
         {
             //Pick a random fish to start the game off with
             PickNextFish();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         public bool CheckMeal(CreatureType typeEaten)
@@ -61,6 +57,8 @@ namespace SharkRush
         private void PickNextFish()
         {
             this.desiredFish = (CreatureType)Random.Range(0, System.Enum.GetValues(typeof(CreatureType)).Length);
+            if (indicator)
+                indicator.UpdateIndicator(desiredFish);
         }
     } 
 }

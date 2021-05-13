@@ -5,10 +5,9 @@ using UnityEngine;
 namespace SharkRush
 {
     public enum CreatureType
-    { 
+    {
         SeaLion,
         Dolphin,
         SeaTurtle
     }
-
 }
